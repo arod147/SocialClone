@@ -1,14 +1,14 @@
 import Footer from "../Footer/Footer";
-import Form from "../Form/Form";
 import Header from "../Header/Header";
 import Posts from "../Posts/Posts";
+import Test from "../Test/Test";
 
 const Homepage = () => {
   return (
     <>
       <Header />
       <Posts />
-      <Form />
+      <Test />
       <Footer />
     </>
   );
