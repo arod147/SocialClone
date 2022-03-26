@@ -1,7 +1,15 @@
-import React from "react";
+import { Container, Row } from "react-bootstrap";
+import Post from "./Post/Post";
 
 const Posts = () => {
-  return <div>Posts</div>;
+  return (
+    <Container className="justify-content-center">
+      <Row xs={1} md={2}>
+        <Post />
+        <Post />
+      </Row>
+    </Container>
+  );
 };
 
 export default Posts;
