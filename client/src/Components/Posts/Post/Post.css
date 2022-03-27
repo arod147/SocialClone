@@ -1,3 +1,7 @@
 .card {
   width: 100%;
 }
+
+.cardImg {
+  height: 50%;
+}

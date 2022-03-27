@@ -5,7 +5,11 @@ const Post = () => {
   return (
     <Col>
       <Card>
-        <CardImg src="https://via.placeholder.com/150" alt="cool stuff" />
+        <CardImg
+          className="cardImg"
+          src="https://via.placeholder.com/150"
+          alt="cool stuff"
+        />
         <Card.ImgOverlay>
           <Card.Title>Alex</Card.Title>
           <Card.Text>Updated 3 min ago.</Card.Text>

@@ -1,3 +1,4 @@
+import { Col, Container, Row } from "react-bootstrap";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Posts from "../Posts/Posts";
@@ -5,12 +6,22 @@ import Test from "../Test/Test";
 
 const Homepage = () => {
   return (
-    <>
-      <Header />
-      <Posts />
-      <Test />
-      <Footer />
-    </>
+    <Container>
+      <Row>
+        <Header />
+      </Row>
+      <Row lg={2} xs={1}>
+        <Col>
+          <Posts />
+        </Col>
+        <Col>
+          <Test />
+        </Col>
+      </Row>
+      <Row>
+        <Footer />
+      </Row>
+    </Container>
   );
 };
 

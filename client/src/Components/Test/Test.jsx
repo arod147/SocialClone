@@ -23,7 +23,7 @@ const Test = () => {
   return (
     <Form>
       <FormGroup as={Row} className="m-4">
-        <Col sm={4}>
+        <Col sm={7}>
           <FormControl
             required
             className="text-center"
@@ -35,7 +35,7 @@ const Test = () => {
         </Col>
       </FormGroup>
       <FormGroup as={Row} className="m-4">
-        <Col sm={4}>
+        <Col sm={7}>
           <FormControl
             required
             className="text-center"
@@ -47,7 +47,7 @@ const Test = () => {
         </Col>
       </FormGroup>
       <FormGroup as={Row} className="m-4">
-        <Col sm={4}>
+        <Col sm={7}>
           <FormControl
             required
             className="text-center"
@@ -59,7 +59,7 @@ const Test = () => {
         </Col>
       </FormGroup>
       <FormGroup as={Row} className="m-4">
-        <Col sm={4}>
+        <Col sm={7}>
           <FormControl
             required
             className="text-center"
@@ -71,7 +71,7 @@ const Test = () => {
         </Col>
       </FormGroup>
       <FormGroup as={Row} className="m-4">
-        <Col sm={4}>
+        <Col sm={7}>
           <FormControl
             required
             className="text-center"
