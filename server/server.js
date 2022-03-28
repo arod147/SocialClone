@@ -3,7 +3,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import mongoose from 'mongoose'
-// import userRoutes from './routes/user.js'
+import postRoutes from './Routes/posts.js'
+
 dotenv.config()
 
 const app = express()
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
 app.use(express.json())
 
-// app.use('/user', userRoutes)
+app.use('/posts', postRoutes);
 
 const uri = process.env.ATLAS_URI
 mongoose.connect(uri);
