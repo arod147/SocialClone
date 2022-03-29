@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import Posts from "../Posts/Posts";
 import Test from "../Test/Test";
 
+//Used to structure our page before passing it to our App
 const Homepage = () => {
   return (
     <Container>

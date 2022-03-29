@@ -10,6 +10,7 @@ function App() {
   const dispatch = useAppDispatch();
   const posts = useAppSelector(selectPosts);
 
+  //Updates display if any posts are changed
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch, posts]);

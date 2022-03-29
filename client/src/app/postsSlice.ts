@@ -3,10 +3,12 @@ import { RootState } from './store';
 
 export interface State {
     posts: any[]
+    currentId: number
 }
 
 const initialState: State = {
-    posts: []
+    posts: [],
+    currentId: 0
 }
 
 export const postSlice = createSlice({
@@ -28,7 +30,9 @@ export const postSlice = createSlice({
         DELETE: (state, selectedPost: PayloadAction<any>) => {
             state.posts.filter((post) => post._id !== selectedPost.payload);
         },
-
+        setCurrentId: (state, id: PayloadAction<number>) => {
+            state.currentId = id.payload
+        },
     }
 });
 
@@ -37,9 +41,11 @@ export const {
     CREATE,
     LIKE,
     UPDATE,
-    DELETE
+    DELETE,
+    setCurrentId
 } = postSlice.actions;
 
 export const selectPosts = (state: RootState) => state.posts.posts;
+export const selectCurrentId = (state: RootState) => state.posts.currentId;
 
 export default postSlice.reducer

@@ -7,12 +7,24 @@ import {
   FormGroup,
   Row,
 } from "react-bootstrap";
-import { useAppDispatch } from "../../app/hooks";
-import { createNewPost } from "../../app/postsThunks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { createNewPost, updatePost } from "../../app/postsThunks";
+import { selectCurrentId, setCurrentId } from "../../app/postsSlice";
 import FileBase from "react-file-base64";
 
+//Form for creating and editing posts
 const Test = () => {
   const dispatch = useAppDispatch();
+  const currentId = useAppSelector(selectCurrentId);
+
+  //Get post information to edit
+  const post = useAppSelector((state) =>
+    currentId
+      ? state.posts.posts.find((message) => message._id === currentId)
+      : null
+  );
+
+  //Form info
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -27,8 +39,17 @@ const Test = () => {
     });
   };
 
+  //Updates our form if we choose to edit a post
+  useEffect(() => {
+    // console.log(post);
+    if (post) {
+      updateForm(post);
+    }
+  }, [currentId]);
+
+  // Reset from
   const clear = () => {
-    // setCurrentId(0);
+    dispatch(setCurrentId(0));
     setPostData({
       creator: "",
       title: "",
@@ -41,19 +62,16 @@ const Test = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // if (currentId === 0) {
-    dispatch(createNewPost(postData));
-    clear();
-    // } else {
-    //   dispatch(updatePost(currentId, postData));
-    //   clear();
-    // }
+    if (currentId === 0) {
+      dispatch(createNewPost(postData));
+      clear();
+    } else {
+      dispatch(updatePost(currentId, postData));
+      clear();
+    }
   };
 
-  useEffect(() => {
-    console.log(postData);
-  }, [postData]);
-
+  //Form structure
   return (
     <Form onSubmit={handleSubmit}>
       <FormGroup as={Row} className="m-4">
@@ -114,7 +132,7 @@ const Test = () => {
       <Button variant="primary" type="submit">
         Submit
       </Button>
-      <Button>Clear</Button>
+      <Button onClick={() => clear()}>Clear</Button>
     </Form>
   );
 };

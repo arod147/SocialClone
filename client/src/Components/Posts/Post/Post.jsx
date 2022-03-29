@@ -1,9 +1,12 @@
+import moment from "moment";
 import { Button, Card, CardImg, Col } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useAppDispatch } from "../../../app/hooks";
+import { setCurrentId } from "../../../app/postsSlice";
 import { deletePost, likePost } from "../../../app/postsThunks";
 import "../Post/Post.css";
 
+//Template use for all posts
 const Post = (props) => {
   const dispatch = useAppDispatch();
 
@@ -12,7 +15,14 @@ const Post = (props) => {
       <Card>
         <CardHeader>
           <Card.Title>{props.post.creator}</Card.Title>
-          <Card.Text>{props.post.createdAt}</Card.Text>
+          <Card.Text>{moment(props.post.createdAt).fromNow()}</Card.Text>
+          <Button
+            size="sm"
+            variant="primary"
+            onClick={() => dispatch(setCurrentId(props.post._id))}
+          >
+            Edit
+          </Button>
         </CardHeader>
         <CardImg
           className="cardImg"
@@ -23,9 +33,9 @@ const Post = (props) => {
           alt="cool stuff"
         />
         <Card.Body>
-          <Card.Subtitle>{props.post.tags}</Card.Subtitle>
           <Card.Title>{props.post.title}</Card.Title>
           <Card.Text>{props.post.message}</Card.Text>
+          <Card.Subtitle>{props.post.tags}</Card.Subtitle>
         </Card.Body>
         <Card.Footer>
           <Button
