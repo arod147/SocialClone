@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 import { useAppDispatch } from "../../app/hooks";
 import { createNewPost } from "../../app/postsThunks";
+import FileBase from "react-file-base64";
 
 const Test = () => {
   const dispatch = useAppDispatch();
@@ -103,19 +104,13 @@ const Test = () => {
           />
         </Col>
       </FormGroup>
-      <FormGroup as={Row} className="m-4">
-        <Col sm={7}>
-          <FormControl
-            required
-            className="text-center"
-            type="file"
-            multiple={false}
-            value={postData.selectedFile}
-            placeholder="Tags"
-            onChange={(e) => updateForm({ selectedFile: e.target.value })}
-          />
-        </Col>
-      </FormGroup>
+      <div>
+        <FileBase
+          type="file"
+          multiple={false}
+          onDone={({ base64 }) => updateForm({ selectedFile: base64 })}
+        />
+      </div>
       <Button variant="primary" type="submit">
         Submit
       </Button>
